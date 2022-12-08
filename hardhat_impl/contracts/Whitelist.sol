@@ -6,7 +6,7 @@ contract Whitelist {
 
     uint8 public maxWhiteListed;
 
-    uint8 public numwhitelisted;
+    uint8 public numAddressesWhitelisted;
 
     mapping(address => bool) public whitelistedAddresses;
 
@@ -17,11 +17,11 @@ contract Whitelist {
     function addAddressToWhitelist() public{
         require(!whitelistedAddresses[msg.sender], "sender is already verified");
         
-        require(numwhitelisted < maxWhiteListed, "Limit reched, More addresses cannot be added");
+        require(numAddressesWhitelisted < maxWhiteListed, "Limit reched, More addresses cannot be added");
         
         whitelistedAddresses[msg.sender] = true;
 
-        numwhitelisted+=1;
+        numAddressesWhitelisted+=1;
     }
 
 
